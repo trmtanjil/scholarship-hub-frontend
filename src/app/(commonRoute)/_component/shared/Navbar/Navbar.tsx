@@ -69,9 +69,11 @@ export default function Navbar() {
                 Log in
               </Button>
             </Link>
-            <Button className="bg-blue-800 hover:bg-black font-semibold text-white shadow-md transition-all hover:scale-105">
-              Sign up
-            </Button>
+            <Link href="/signUp">
+              <Button className="bg-blue-800 hover:bg-black font-semibold text-white shadow-md transition-all hover:scale-105">
+                Sign up
+              </Button>
+            </Link>
           </div>
         </div>
 

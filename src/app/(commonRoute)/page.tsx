@@ -1,8 +1,17 @@
-import React from 'react'
+import Banner from "./_component/page/home/HeroBanner"
+
+
+
+
 
 function page() {
     return (
-        <div>home page</div>
+        <div className="min-h-screen bg-gray-50/50">
+            <Banner />
+            <div className="py-12 px-4 max-w-7xl mx-auto">
+                {/* Other home page content can go here */}
+            </div>
+        </div>
     )
 }
 
