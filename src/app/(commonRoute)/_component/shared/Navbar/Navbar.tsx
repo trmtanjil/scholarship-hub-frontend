@@ -21,7 +21,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-
+import { authClient } from "@/lib/auth-client"
+import { useRouter } from "next/navigation"
+ 
 const navItems = [
   { title: "Home", href: "/" },
   { title: "Scholarships", href: "/scholarships" },
@@ -31,6 +33,19 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
+    const { data: session, isPending } = authClient.useSession();
+  console.log(session)
+    const router = useRouter();
+
+    const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login"); 
+        },
+      },
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -64,16 +79,24 @@ export default function Navbar() {
           </NavigationMenu>
 
           <div className="flex items-center gap-3">
-            <Link href="/login">
-              <Button variant="ghost" className="font-medium">
-                Log in
-              </Button>
-            </Link>
-            <Link href="/signUp">
-              <Button className="bg-blue-800 hover:bg-black font-semibold text-white shadow-md transition-all hover:scale-105">
-                Sign up
-              </Button>
-            </Link>
+             {!isPending && (
+              <>
+                {session ? (
+                  <Button  onClick={handleLogout}  variant="destructive" size="sm">
+                    Logout
+                  </Button>
+                ) : (
+                  <div className="hidden lg:flex gap-2">
+                    <Button asChild variant="outline" size="sm">
+                      <Link href="/login">Login</Link>
+                    </Button>
+                    <Button asChild size="sm">
+                      <Link href="/signUp">Register</Link>
+                    </Button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
 
