@@ -1,9 +1,9 @@
 import React from 'react'
 
-function page() {
-    return (
-        <div>admin dashboard page</div>
-    )
+export default function AdminDashboard({children}:{ children: React.ReactNode;}) {
+  return (
+    <div>this is AdminDashboard
+      {children}
+    </div>
+  )
 }
-
-export default page
