@@ -124,7 +124,7 @@ console.log("Response Status:", res.status);
 
   adminUpdateUserStatus: async function (
     id: string,
-    payload: { role: "ADMIN" | "SELLER" | "CUSTOMER" },
+    payload: { role: "ADMIN" | "MODERATOR" | "USER" },
   ) {
     try {
       const cookieHeader = await getCookieHeader();
