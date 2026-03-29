@@ -12,6 +12,13 @@ export interface IApplication {
     universityName: string;
     category: string;
   };
+  user?: {
+    id?: string;
+    name?: string;
+    email?: string;
+    image?: string;
+  };
+  documents?: string;
   payment?: {
     transactionId: string;
     amount: number;

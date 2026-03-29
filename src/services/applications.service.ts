@@ -4,6 +4,22 @@ import { ServiceResult } from "@/types/category.type";
 
 export const applicationService = {
 
+getAllApplications: async (): Promise<ServiceResult<IApplication[]>> => {
+  return await apiFetch<IApplication[]>("/applications", {
+    method: "GET",
+    cache: "no-store",
+  });
+},
+
+// অ্যাপ্লিকেশনের স্ট্যাটাস আপডেট করা
+updateApplicationStatus: async (id: string, status: string): Promise<ServiceResult<IApplication>> => {
+  return await apiFetch<IApplication>(`/applications/${id}/status`, {
+    method: "PATCH",
+    body: JSON.stringify({ status }),
+  });
+},
+
+
 deleteApplication: async (id: string): Promise<ServiceResult<IMessageResponse>> => {
     return await apiFetch<IMessageResponse>(`/applications/${id}`, {
       method: "DELETE",
@@ -39,3 +55,4 @@ deleteApplication: async (id: string): Promise<ServiceResult<IMessageResponse>> 
     });
   },
 };
+

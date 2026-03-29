@@ -53,3 +53,16 @@ export const updateApplicationAction = async (
     return { data: null, error: error?.message || "Failed to update" };
   }
 };
+
+export const getAllApplicationsAction = async () => {
+  return await applicationService.getAllApplications();
+};
+
+export const updateApplicationStatusAction = async (
+  id: string,
+  status: string
+): Promise<ServiceResult<IApplication>> => {
+  const res = await applicationService.updateApplicationStatus(id, status);
+  if (res.data) revalidatePath("/dashboard/admin/all-applications");
+  return res;
+};
