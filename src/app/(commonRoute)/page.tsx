@@ -1,6 +1,6 @@
 import Banner from "./_component/page/home/HeroBanner"
-import ScholarshipList from "./allschollerships/[id]/page"
-
+import ScholarshipList from "./allschollerships/page"
+ 
 
 
 

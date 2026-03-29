@@ -25,7 +25,7 @@ export const getAllScholarshipsAction = async (
 export const getSingleScholarshipAction = async (
   id: string
 ): Promise<ServiceResult<IScholarship>> => {
-  return await apiFetch<IScholarship>(`/scholarships/${id}`, {
+  return await apiFetch<IScholarship>(`/scholarship/${id}`, {
     method: "GET",
     next: { tags: [`scholarship-${id}`] },
   });
