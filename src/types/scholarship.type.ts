@@ -36,3 +36,15 @@ export type TCreateScholarship = Omit<
   IScholarship,
   "id" | "createdAt" | "updatedAt" | "postedById"
 >;
+ 
+
+
+export interface ICreateScholarshipPayload {
+  title: string;
+  universityName: string;
+  category: Category;
+  subject: string;
+  description: string;
+  deadline: string;
+  applicationFee: number;
+}

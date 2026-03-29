@@ -13,8 +13,7 @@ export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
 
   const session = authClient.useSession();
-  console.log("sesssion",session)
-
+ 
   // Email + Password Login
   const handleLogin = async () => {
     setLoading(true);

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -13,8 +14,7 @@ export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
 
   const session = authClient.useSession();
-  console.log("sesssion",session)
-
+ 
   // Email + Password Login
   const handleLogin = async () => {
     setLoading(true);
@@ -30,7 +30,7 @@ export default function LoginForm() {
       if (res.error) {
         setError(error);
       }
-    } catch (err) {
+    } catch (err : any) {
       setError("Login failed");
     } finally {
       setLoading(false);

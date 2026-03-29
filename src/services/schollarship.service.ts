@@ -1,5 +1,5 @@
 import { ServiceResult } from "@/types/category.type";
-import { IScholarship, ScholarshipParams, TCreateScholarship } from "@/types/scholarship.type";
+import { ICreateScholarshipPayload, IScholarship, ScholarshipParams, TCreateScholarship } from "@/types/scholarship.type";
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
@@ -56,6 +56,14 @@ export function buildQuery(params?: ScholarshipParams): string {
 }
 
 export const ScholarshipService = {
+
+  createScholarship: async (payload: ICreateScholarshipPayload): Promise<ServiceResult<IScholarship>> => {
+    return await apiFetch<IScholarship>("/scholarship", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
+
   getAll: async (params?: ScholarshipParams): Promise<ServiceResult<IScholarship[]>> => {
     const query = buildQuery(params);
     return await apiFetch<IScholarship[]>(`/scholarships${query ? `?${query}` : ""}`, {

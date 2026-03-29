@@ -2,9 +2,9 @@
 "use server";
 
 import { applicationService } from "@/services/applications.service";
-import { apiFetch, buildQuery } from "@/services/schollarship.service";
+import { apiFetch, buildQuery, ScholarshipService } from "@/services/schollarship.service";
 import { ServiceResult } from "@/types/category.type";
-import { IScholarship, ScholarshipParams } from "@/types/scholarship.type";
+import { ICreateScholarshipPayload, IScholarship, ScholarshipParams } from "@/types/scholarship.type";
 import { IApplication, IUpdateApplicationPayload, IMessageResponse } from "@/types/application.type";
 import { revalidatePath } from "next/cache";
 
@@ -65,4 +65,21 @@ export const updateApplicationAction = async (
   }
   
   return { success: false, message: result.error || "Failed to update application" };
+};
+
+export const createScholarshipAction = async (payload: ICreateScholarshipPayload) => {
+  try {
+    const result = await ScholarshipService.createScholarship(payload);
+    if (result.data) {
+      // revalidatePath("/scholarships");
+      revalidatePath("/admin-dashboard/addscholarship");
+    }
+
+    return result as ServiceResult<IScholarship>;
+  } catch (error: any) {
+    return {
+      data: null,
+      error: error?.message || "Something went wrong while adding scholarship",
+    };
+  }
 };
