@@ -15,15 +15,14 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { Roles } from "@/constentse/roles"; // বানান ঠিক করো যদি 'constants' হয়
+import { Roles } from "@/constentse/roles"; 
 import { userService } from "@/services/user.service";
 import { AppSidebar } from "@/components copy/layout/app-sidebar";
+import { Toaster } from "sonner"; //
 
 export const dynamic = 'force-dynamic';
 
 export default async function DashboardLayout(props: any) {
-  // ১. তোমার ফোল্ডার স্ট্রাকচার অনুযায়ী স্লটগুলো রিসিভ করো
-  // @admin -> admin, @moderator -> moderator, @user -> user
   const { admin, moderator, user } = props; 
   
   const userData = await userService.getSession();
@@ -32,6 +31,7 @@ export default async function DashboardLayout(props: any) {
   return (
     <SidebarProvider>
       <AppSidebar user={userRole} />
+      
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
@@ -55,15 +55,22 @@ export default async function DashboardLayout(props: any) {
         </header>
 
         <div className="flex flex-1 flex-col gap-4 p-4">
-          {/* ২. রোল অনুযায়ী সঠিক স্লট রেন্ডার করো */}
+          {/* রোল অনুযায়ী স্লট রেন্ডার */}
           {userRole === Roles.ADMIN && admin}
           {userRole === Roles.MODERATOR && moderator}
           {userRole === Roles.USER && user}
           
-          {/* যদি উপরের কোনটাই না মিলে তবে fallback */}
-          {!userRole && <p>Unauthorized Access</p>}
+          {!userRole && (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-muted-foreground italic">Unauthorized Access</p>
+            </div>
+          )}
         </div>
       </SidebarInset>
+
+      {/* Toaster এখানে রাখা সবথেকে নিরাপদ, এটি গ্লোবালি সব নোটিফিকেশন দেখাবে */}
+      <Toaster richColors position="top-right" closeButton /> 
+
     </SidebarProvider>
   );
 }
