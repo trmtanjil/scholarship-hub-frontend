@@ -25,6 +25,10 @@ export const adminRoutes: Route[] = [
         title: "Manage Scholarships",
         url: "/admin-dashboard/managescholarship",
       },
+      {
+        title: "Manage reviews",
+        url: "/admin-dashboard/managereviews",
+      },
    
    
     ],

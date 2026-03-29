@@ -87,7 +87,7 @@ export const ScholarshipService = {
   },
 
   update: async (id: string, data: Partial<TCreateScholarship>): Promise<ServiceResult<IScholarship>> => {
-    return await apiFetch<IScholarship>(`/scholarships/${id}`, {
+    return await apiFetch<IScholarship>(`/scholarship/${id}`, {
       method: "PATCH",
       body: JSON.stringify(data),
     });

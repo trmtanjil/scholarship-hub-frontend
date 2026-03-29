@@ -60,7 +60,7 @@ export const updateApplicationAction = async (
   const result = await applicationService.updateApplication(id, payload);
   
   if (result.data) {
-    revalidatePath("/dashboard/user/my-scholarships");
+    revalidatePath("admin-dashboard/managescholarship");
     return { success: true, data: result.data };
   }
   
@@ -81,5 +81,30 @@ export const createScholarshipAction = async (payload: ICreateScholarshipPayload
       data: null,
       error: error?.message || "Something went wrong while adding scholarship",
     };
+  }
+};
+
+ 
+export const deleteScholarshipAction = async (id: string) => {
+  const res = await ScholarshipService.delete(id);
+  if (res.data) revalidatePath("/dashboard/admin/manage-scholarships");
+  return res;
+};
+
+ 
+
+// স্কলারশিপ আপডেট করা
+export const updateScholarshipAction = async (
+  id: string,
+  payload: Partial<ICreateScholarshipPayload>
+): Promise<ServiceResult<IScholarship>> => {
+  try {
+    const result = await ScholarshipService.update(id, payload);
+    if (result.data) {
+      revalidatePath("/dashboard/admin/manage-scholarships");
+    }
+    return result;
+  } catch (error: any) {
+    return { data: null, error: error?.message || "Failed to update" };
   }
 };
