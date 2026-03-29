@@ -16,7 +16,11 @@ export const userRoutes: Route[] = [
         title: "My Applications",
         url: "/myapplications",
       },
+      {
+        title: "My reviews",
+        url: "/reviews",
+      },
      
     ],
-  },
+  }, 
 ];

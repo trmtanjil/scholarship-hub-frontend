@@ -21,6 +21,7 @@ import Link from "next/link";
 // নতুন কম্পোনেন্ট ইমপোর্ট
 import { DeleteConfirmationModal } from "@/components/modals/delete-confirmation-modal";
 import { AddReviewModal } from "@/components/modals/add-review-modal";
+import { UpdateApplicationModal } from "@/components/modals/update-application-modal";
 
 export default function MyScholarships() {
   const [applications, setApplications] = useState<IApplication[]>([]);
@@ -127,7 +128,7 @@ export default function MyScholarships() {
 
                       {/* Edit Button */}
                       <Button variant="outline" size="icon" className="h-8 w-8 text-blue-600 hover:bg-blue-50" title="Edit Application">
-                        <Edit className="h-4 w-4" />
+                       <UpdateApplicationModal application={app} />
                       </Button>
 
                       {/* Review Modal */}

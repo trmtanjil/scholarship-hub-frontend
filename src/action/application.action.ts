@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { applicationService } from "@/services/applications.service";
 import { apiFetch } from "@/services/schollarship.service";
-import { IApplication } from "@/types/application.type";
+import { IApplication, IUpdateApplicationPayload } from "@/types/application.type";
 import { ServiceResult } from "@/types/category.type";
- import { revalidateTag } from "next/cache";
+ import { revalidatePath, revalidateTag } from "next/cache";
 
 interface IApplicationResponse {
   id: string;
@@ -35,4 +37,19 @@ export const getMyApplicationsAction = async (): Promise<ServiceResult<IApplicat
     method: "GET",
     cache: "no-store", // সবসময় লেটেস্ট ডেটা পাওয়ার জন্য
   });
+};
+
+export const updateApplicationAction = async (
+  id: string,
+  payload: IUpdateApplicationPayload
+): Promise<ServiceResult<IApplication>> => {
+  try {
+    const result = await applicationService.updateApplication(id, payload);
+    if (result.data) {
+      revalidatePath("/myscholarships");
+    }
+    return result;
+  } catch (error: any) {
+    return { data: null, error: error?.message || "Failed to update" };
+  }
 };
