@@ -5,18 +5,18 @@ export const userRoutes: Route[] = [
   
   {
     
-    title: "Customer Dashboard",
+    title: "student Dashboard",
     items: [
   
       {
         title: "Profile",
-        url: "/profile",
+        url: "/userprofile",
       },
       {
-        title: "Orders",
-        url: "/orders",
+        title: "myscholarships",
+        url: "/myscholarships",
       },
-        { title: "Card", url: "/card" },
+     
     ],
   },
 ];

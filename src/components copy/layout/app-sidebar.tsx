@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { Route } from "@/types/routes.type";
 import { adminRoutes } from "@/routes/adminRoutes";
-import { userRoutes } from "@/routes/customerRoutes";
+import { userRoutes } from "@/routes/userRoutes";
  import DashboardLogo from "../Sheared/DashboardLogo";
 import { moderatorRoutes } from "@/routes/moderatorRoutes";
   
