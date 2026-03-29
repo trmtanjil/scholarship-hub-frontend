@@ -30,8 +30,7 @@ export const CheckoutForm = ({ clientSecret, amount, scholarshipId }: any) => {
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: { card: elements.getElement(CardElement)! },
     });
-    console.log(paymentIntent)
-
+ 
     if (error) {
       toast.error(error.message || "Payment Failed");
       setLoading(false);
@@ -59,7 +58,7 @@ export const CheckoutForm = ({ clientSecret, amount, scholarshipId }: any) => {
 
     if (res.data) {
       toast.success("Application Submitted Successfully!");
-      window.location.href = "/dashboard/user/my-applications";
+      window.location.href = "/myapplications";
     } else {
       toast.error(res.error || "Something went wrong");
     }

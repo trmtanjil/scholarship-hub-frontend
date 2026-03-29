@@ -13,8 +13,8 @@ export const userRoutes: Route[] = [
         url: "/userprofile",
       },
       {
-        title: "myscholarships",
-        url: "/myscholarships",
+        title: "My Applications",
+        url: "/myapplications",
       },
      
     ],

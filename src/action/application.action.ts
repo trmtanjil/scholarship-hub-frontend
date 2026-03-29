@@ -1,6 +1,8 @@
 "use server";
 
 import { apiFetch } from "@/services/schollarship.service";
+import { IApplication } from "@/types/application.type";
+import { ServiceResult } from "@/types/category.type";
  import { revalidateTag } from "next/cache";
 
 interface IApplicationResponse {
@@ -26,4 +28,11 @@ export const createFullApplicationAction = async (payload: {
     revalidateTag("scholarships", "default"); 
   }
   return result;
+};
+export const getMyApplicationsAction = async (): Promise<ServiceResult<IApplication[]>> => {
+  // এখানে তোমার ব্যাকএন্ডের সঠিক এন্ডপয়েন্টটি দাও
+  return await apiFetch<IApplication[]>("/applications/my-applications", {
+    method: "GET",
+    cache: "no-store", // সবসময় লেটেস্ট ডেটা পাওয়ার জন্য
+  });
 };
