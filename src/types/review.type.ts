@@ -6,9 +6,19 @@ export interface IReview {
   comment: string;
   user?: {
     name: string;
+    email?: string;
     image?: string;
   };
   createdAt: string;
+}
+
+// Optionally include populated relations returned by some endpoints
+export interface IReviewWithRelations extends IReview {
+  scholarship?: {
+    id?: string;
+    title?: string;
+    universityName?: string;
+  };
 }
 
 export interface ICreateReviewPayload {

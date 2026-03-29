@@ -44,3 +44,7 @@ export const updateReviewAction = async (
   if (res.data) revalidatePath("/dashboard/user/my-reviews");
   return res;
 };
+
+export const getAllReviewsAction = async () => {
+  return await reviewService.getAllReviews();
+};

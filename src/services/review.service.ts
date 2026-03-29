@@ -40,4 +40,16 @@ updateReview: async (id: string, payload: { rating: number; comment: string }): 
       method: "GET",
     });
   },
+
+
+  getAllReviews: async (): Promise<ServiceResult<IReview[]>> => {
+    return await apiFetch<IReview[]>("/reviews", {
+      method: "GET",
+      cache: "no-store",
+    });
+  },
+
+  // Jekono review delete kora
+   
+
 };
