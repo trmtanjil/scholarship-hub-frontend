@@ -54,10 +54,10 @@ export default function MyReviews() {
     }
   };
 
-  if (loading) {
+  if (loading){
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <Loader2 className="animate-spin h-8 w-8 text-primary" />
+        <Loader2 className="animate-spin h-8 w-8 text-primary"/>
       </div>
     );
   }

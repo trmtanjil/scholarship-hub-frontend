@@ -17,7 +17,6 @@ export const authClient = createAuthClient({
                                 const {cookies}= await import("next/headers");
                                 const headers= await cookies();
                                 ctx.headers.set("cookie",headers.toString());
-
                             }
                         }
                     }

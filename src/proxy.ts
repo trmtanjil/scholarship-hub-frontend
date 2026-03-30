@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
- const privatePaths = ["/dashboard","/admin-dashboard", "/profile", "/private"]; 
+ const privatePaths = ["/dashboard","/admin-dashboard", "/profile", "/private","/payment"]; 
  
  const authPaths = ["/login", "/signUp"];
 
@@ -10,7 +10,6 @@ export async function proxy(request: NextRequest) {
 const sessionCookie = getSessionCookie(request);
   
  
-
   const isPrivatePath = privatePaths.some(
     (path) => pathname === path || pathname.startsWith(path + "/"),
   );

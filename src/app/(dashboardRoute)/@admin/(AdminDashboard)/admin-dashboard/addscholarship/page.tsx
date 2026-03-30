@@ -43,7 +43,7 @@ export default function AddScholarshipPage() {
       const res = await createScholarshipAction(payload);
       if (res && res.data) {
         toast.success("Scholarship added successfully!");
-        router.push("/dashboard/admin/manage-scholarships"); // লিস্ট পেজে পাঠিয়ে দিবে
+        router.push("/admin-dashboard/managescholarship"); // লিস্ট পেজে পাঠিয়ে দিবে
       } else {
         toast.error(res?.error || "Failed to create scholarship");
       }
