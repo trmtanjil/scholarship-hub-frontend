@@ -44,7 +44,7 @@ export default function ManageReviews() {
       setDeletingId(id);
       const res = await deleteReviewAction(id);
       if (res && res.data?.success) {
-        toast.success(res.data.message || "Review deleted successfully");
+        toast.success(res.data ?.message || "Review deleted successfully");
         fetchReviews(); // List refresh korbe
       } else {
         toast.error(res?.error || res.data?.message || "Failed to delete");

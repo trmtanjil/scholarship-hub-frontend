@@ -37,11 +37,11 @@ export default function EditScholarshipPage() {
           setScholarship(res.data);
         } else {
           toast.error("Scholarship not found");
-          router.push("/dashboard/admin/manage-scholarships");
+          router.push("/admin-dashboard/managescholarship");
         }
       } catch (err) {
         toast.error("Failed to load scholarship");
-        router.push("/dashboard/admin/manage-scholarships");
+        router.push("/admin-dashboard/managescholarship");
       } finally {
         setLoading(false);
       }
@@ -68,7 +68,7 @@ export default function EditScholarshipPage() {
       const res = await updateScholarshipAction(id, payload);
       if (res && res.data) {
         toast.success("Scholarship updated successfully!");
-        router.push("/dashboard/admin/manage-scholarships");
+        router.push("/admin-dashboard/managescholarship");
       } else {
         toast.error(res?.error || "Failed to update scholarship");
       }

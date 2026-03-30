@@ -43,12 +43,12 @@ export default async function DashboardLayout(props: any) {
             <BreadcrumbList>
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href="#">
-                  Welcome to Medicare
+                  Welcome to 
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Stay Healthy</BreadcrumbPage>
+                <BreadcrumbPage>Scholarship Hub</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

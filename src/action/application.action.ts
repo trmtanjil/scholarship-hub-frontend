@@ -66,3 +66,25 @@ export const updateApplicationStatusAction = async (
   if (res.data) revalidatePath("/dashboard/admin/all-applications");
   return res;
 };
+export const getSingleApplicationAction = async (id: string) => {
+  try {
+    const res = await applicationService.getSingleApplication(id);
+    
+    // যদি ডাটা না পায় বা এরর হয়
+    if (!res.data) {
+      return {
+        success: false,
+        message: res.data || "Application not found",
+        data: null
+      };
+    }
+
+    return res;
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message || "Failed to fetch application details",
+      data: null
+    };
+  }
+};
