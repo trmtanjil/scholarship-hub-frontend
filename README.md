@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Scholarship Hub Frontend
+The official frontend for the Scholarship Hub platform. A modern, fast, and highly responsive web application designed to connect students with global scholarship opportunities.
 
-## Getting Started
+Tech Stack
+This project is built with a focus on performance, SEO, and developer experience:
 
-First, run the development server:
+Framework: Next.js 15+ (App Router)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Language: TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Styling: Tailwind CSS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+UI Components: DaisyUI & Lucide React Icons
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Animation: Framer Motion
 
-## Learn More
+Authentication: BetterAuth React Client
 
-To learn more about Next.js, take a look at the following resources:
+State Management: React Server Components (RSC) & Standard Hooks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Data Fetching: Fetch API with Server-Side Rendering (SSR) & ISR
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ Key Features
+Dynamic Scholarship Portal: Browse and filter scholarships by category, university, and subject with real-time updates.
 
-## Deploy on Vercel
+Secure Authentication: Seamless Login/Signup and Google Social Auth integration via BetterAuth.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Unified Dashboard: Separate, protected dashboards for Users (Applications/Reviews) and Admins (Management/Analytics).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Application Tracking: A clean multi-step application process with status tracking (Pending, Review, Accepted).
+
+Interactive UI: Smooth infinite scroll animations for user reviews and modern glassmorphism design elements.
+
+Secure Middleware: Custom Next.js Middleware to protect private routes and handle session-based redirection.
+
+Payment Integration: Seamless Stripe checkout experience for scholarship application fees.
