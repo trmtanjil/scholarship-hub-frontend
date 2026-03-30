@@ -1,7 +1,7 @@
 import { Toaster } from "sonner";
 import Footer from "./_component/shared/Footer/Footer";
-import Navbar from "./_component/shared/Navbar/Navbar";
-
+import { Navbar } from "@/components copy/Sheared/navbar1";
+ 
 
 export default function CommonLayout({
     children,

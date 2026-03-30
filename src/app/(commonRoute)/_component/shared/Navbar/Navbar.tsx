@@ -1,146 +1,132 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { Menu, GraduationCap } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { authClient } from "@/lib/auth-client"
-import { useRouter } from "next/navigation"
  
-const navItems = [
-  { title: "Home", href: "/" },
-  { title: "Scholarships", href: "/scholarships" },
-  { title: "Categories", href: "/categories" },
-  { title: "About Us", href: "/about" },
-]
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import Link from "next/link";
+import { authClient } from "@/lib/auth-client"; // আপনার Better-Auth ক্লায়েন্ট পাথ
+import { useRouter } from "next/navigation";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false)
-    const { data: session, isPending } = authClient.useSession();
-  console.log(session)
-    const router = useRouter();
+const Navbar = ({ className }: { className?: string }) => {
+  // Better-Auth থেকে সেশন ডাটা আনা
+  const { data: session, isPending } = authClient.useSession();
+  const router = useRouter();
 
-    const handleLogout = async () => {
+  const handleLogout = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/login"); 
+          router.push("/Login"); 
         },
       },
     });
   };
 
+const menu = [
+  { title: "Home", url: "/" },
+  { title: "About", url: "/about" },
+    { title: "All scholarship", url: "/allscholarshippublic" },
+  // শুধু লগইন থাকলে দেখাবে
+  ...(session ? [
+    { title: "Dashboard", url: "/dashboard" }
+  ] : []),
+];
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg">
-              <GraduationCap className="h-6 w-6" />
+    <section className={cn("py-4 border-b", className)}>
+      <div className="container mx-auto px-4">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2">
+              <img src="https://i.ibb.co.com/rGRZwXJB/Chat-GPT-Image-Feb-6-2026-01-24-37-AM.png" className="max-h-8" alt="logo" />
+              <span className="text-lg font-semibold uppercase">scholarship</span>
+            </Link>
+
+            {/* Desktop Menu */}
+            <div className="hidden lg:block">
+              <NavigationMenu>
+                <NavigationMenuList className="flex gap-2">
+                  {menu.map((item) => (
+                    <NavigationMenuItem key={item.title}>
+  <NavigationMenuLink asChild>
+    <Link href={item.url} className="px-4 py-2 text-sm font-medium hover:text-amber-600 transition-colors">
+      {item.title}
+    </Link>
+  </NavigationMenuLink>
+</NavigationMenuItem>
+
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
-            <span className="hidden text-xl font-bold tracking-tight text-foreground sm:inline-block">
-              Scholarship<span className="text-primary text-blue-800 font-bold">Hub</span>
-            </span>
-          </Link>
-        </div>
+          </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:gap-6">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.title}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      {item.title}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex items-center gap-2">
+ 
 
-          <div className="flex items-center gap-3">
-             {!isPending && (
+            {/* সেশন অনুযায়ী বাটন পরিবর্তন */}
+            {!isPending && (
               <>
                 {session ? (
-                  <Button  onClick={handleLogout}  variant="destructive" size="sm">
+                  <Button onClick={handleLogout} variant="destructive" size="sm">
                     Logout
                   </Button>
                 ) : (
                   <div className="hidden lg:flex gap-2">
                     <Button asChild variant="outline" size="sm">
-                      <Link href="/login">Login</Link>
+                      <Link href="/Login">Login</Link>
                     </Button>
                     <Button asChild size="sm">
-                      <Link href="/signUp">Register</Link>
+                      <Link href="/register">Register</Link>
                     </Button>
                   </div>
                 )}
               </>
             )}
-          </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        <div className="flex items-center gap-4 md:hidden">
-          <Link href="/login">
-            <Button variant="ghost" size="sm" className="px-3">
-              Log in
-            </Button>
-          </Link>
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open Menu">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-              <SheetHeader className="text-left border-b pb-4 mb-4">
-                <SheetTitle className="flex items-center gap-2">
-                  <GraduationCap className="h-6 w-6 text-primary" />
-                  <span className="font-bold">ScholarshipHub</span>
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center text-lg font-medium transition-colors hover:text-primary py-2 border-b border-transparent hover:border-primary/20"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-                <div className="mt-4 grid gap-3">
-                  <Button className="w-full bg-primary shadow-md" onClick={() => setIsOpen(false)}>
-                    Sign up for free
-                  </Button>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
+            {/* Mobile Menu Trigger */}
+            <div className="lg:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon"><Menu className="size-4" /></Button>
+                </SheetTrigger>
+                <SheetContent>
+                  <div className="flex flex-col gap-4 mt-8">
+                    {menu.map((item) => (
+                      <Link key={item.title} href={item.url} className="text-lg font-semibold border-b pb-2">
+                        {item.title}
+                      </Link>
+                    ))}
+                    {!session ? (
+                      <>
+                        <Button asChild variant="outline"><Link href="/Login">Login</Link></Button>
+                        <Button asChild><Link href="/register">Register</Link></Button>
+                      </>
+                    ) : (
+                      <Button onClick={handleLogout} variant="destructive">Logout</Button>
+                    )}
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
+        </nav>
       </div>
-    </header>
-  )
-}
+    </section>
+  );
+};
+
+export { Navbar };

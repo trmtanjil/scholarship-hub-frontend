@@ -37,10 +37,9 @@ const Navbar = ({ className }: { className?: string }) => {
 const menu = [
   { title: "Home", url: "/" },
   { title: "About", url: "/about" },
-    { title: "All Product", url: "/allproduct" },
+    { title: "All scholarship", url: "/allscholarshippublic" },
   // শুধু লগইন থাকলে দেখাবে
   ...(session ? [
-    { title: "Cart", url: "/card" },
     { title: "Dashboard", url: "/dashboard" }
   ] : []),
 ];
@@ -53,7 +52,7 @@ const menu = [
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
               <img src="https://i.ibb.co.com/rGRZwXJB/Chat-GPT-Image-Feb-6-2026-01-24-37-AM.png" className="max-h-8" alt="logo" />
-              <span className="text-lg font-semibold uppercase">MediCare</span>
+              <span className="text-lg font-semibold uppercase">scholarship</span>
             </Link>
 
             {/* Desktop Menu */}
