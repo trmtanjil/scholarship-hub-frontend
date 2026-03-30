@@ -5,14 +5,34 @@ export const moderatorRoutes: Route[] = [
   
   {
     
-    title: "Customer Dashboard",
+    title: "Modator Dashboard",
     items: [
   
       {
         title: "Profile",
-        url: "/profile",
+        url: "/modaratorprofile",
       },
-     
+      {
+        title: "Manage Users",
+        url: "/manageusers",
+      },
+      {
+        title: "All Applications",
+        url: "/allapplication",
+      },
+      {
+        title: "Edit Scholarship",
+        url: "/editscholarship",
+      },
+        {
+          title: "Manage Scholarships",
+          url: "/managescholarship",
+        },
+      
+      {
+        title: "manage reviews",
+        url: "/managereviews",
+      },
        
     ],
   },
