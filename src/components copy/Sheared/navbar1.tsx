@@ -28,7 +28,7 @@ const Navbar = ({ className }: { className?: string }) => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/Login"); 
+          router.push("/login"); 
         },
       },
     });
@@ -87,10 +87,10 @@ const menu = [
                 ) : (
                   <div className="hidden lg:flex gap-2">
                     <Button asChild variant="outline" size="sm">
-                      <Link href="/Login">Login</Link>
+                      <Link href="/login">Login</Link>
                     </Button>
                     <Button asChild size="sm">
-                      <Link href="/register">Register</Link>
+                      <Link href="/signUp">Register</Link>
                     </Button>
                   </div>
                 )}
@@ -112,8 +112,8 @@ const menu = [
                     ))}
                     {!session ? (
                       <>
-                        <Button asChild variant="outline"><Link href="/Login">Login</Link></Button>
-                        <Button asChild><Link href="/register">Register</Link></Button>
+                        <Button asChild variant="outline"><Link href="/login">Login</Link></Button>
+                        <Button asChild><Link href="/signUp">Register</Link></Button>
                       </>
                     ) : (
                       <Button onClick={handleLogout} variant="destructive">Logout</Button>
