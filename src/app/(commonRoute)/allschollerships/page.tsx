@@ -29,9 +29,9 @@ export default async function FeaturedScholarships() {
   const featured = scholarships?.slice(0, 8);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <section className="max-w-7xl mx-auto  sm:px-6 py-10">
       {/* Header */}
-      <div className="mb-14 text-center space-y-4">
+      <div className="mb-4 text-center space-y-4">
         <div className="flex justify-center">
           <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
             <GraduationCap className="w-7 h-7 text-primary" />
@@ -120,7 +120,7 @@ export default async function FeaturedScholarships() {
       </div>
 
       {/* View All */}
-      <div className="mt-16 text-center">
+      <div className="mt-6 text-center">
         <Button asChild size="lg" className="rounded-2xl px-12">
           <Link href="/allscholarshippublic">
             View All Scholarships

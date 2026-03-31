@@ -2,6 +2,7 @@ import Banner from "./_component/page/home/HeroBanner"
 import ScholarshipList from "./allschollerships/page"
 import HowItWork from "./houtowork/howtowork"
  import UserSay from "./usersay/usersay"
+import Whychoseuse from "./whychoseuse/page"
  
 
 
@@ -15,6 +16,7 @@ function page() {
             <div className="py-12 px-4 max-w-7xl mx-auto">
                  <div><HowItWork></HowItWork></div>
             <div><UserSay></UserSay></div>
+             <div><Whychoseuse></Whychoseuse></div>
              </div>
         </div>
     )

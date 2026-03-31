@@ -37,7 +37,7 @@ const steps = [
 
 export default function HowItWork() {
   return (
-    <section className="py-4 bg-white overflow-hidden">
+    <section className=" bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -48,7 +48,7 @@ export default function HowItWork() {
             className="flex justify-center mb-4"
           >
              {/* Your Logo Representation */}
-            <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
+            <div className="flex items-center gap-2 bg-blue-50 px-4  rounded-full">
               <GraduationCap className="text-blue-600 w-6 h-6" />
               <span className="font-bold text-blue-900 tracking-tight">ScholarshipHub Process</span>
             </div>
