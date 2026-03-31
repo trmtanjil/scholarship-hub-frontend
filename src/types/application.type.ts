@@ -4,7 +4,7 @@ export interface IApplication {
   scholarshipId: string;
   sscResult: number;
   hscResult: number;
-  status: "Pending" | "Review" | "Approved" | "Rejected";
+  status: "Pending" | "Review" | "Accepted" | "Rejected";
   createdAt: string;
   updatedAt: string;
   scholarship?: {

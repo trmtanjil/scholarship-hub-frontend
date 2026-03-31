@@ -27,7 +27,7 @@ export default function MyScholarships() {
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-
+console.log(applications)
   const fetchApplications = useCallback(async () => {
     try {
       setLoading(true);
@@ -94,7 +94,7 @@ export default function MyScholarships() {
           <TableBody>
             {applications.length > 0 ? (
               applications.map((app) => (
-                <TableRow key={app.id} className="hover:bg-slate-50/50 transition-colors">
+                 <TableRow key={app.id} className="hover:bg-slate-50/50 transition-colors">
                   <TableCell className="font-medium text-slate-700">
                     {app.scholarship?.title || "N/A"}
                   </TableCell>
@@ -105,12 +105,13 @@ export default function MyScholarships() {
                     <Badge
                       variant="secondary"
                       className={
-                        app.status === "Approved" ? "bg-green-100 text-green-700" :
-                        app.status === "Rejected" ? "bg-red-100 text-red-700" :
+                        app.status === "Accepted" ? "bg-green-100 text-green-700" :
+                        app.status === "Review" ? "bg-red-100 text-red-700" :
                         app.status === "Pending" ? "bg-yellow-100 text-yellow-700" :
                         "bg-blue-100 text-blue-700"
                       }
                     >
+                     
                       {app.status}
                     </Badge>
                   </TableCell>
@@ -120,7 +121,7 @@ export default function MyScholarships() {
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       {/* View Details */}
-                      <Link href={`/dashboard/user/my-applications/${app.id}`}>
+                      <Link href={`/myapplications/${app.id}`}>
                         <Button variant="outline" size="icon" className="h-8 w-8 hover:bg-slate-100" title="View Details">
                           <Eye className="h-4 w-4" />
                         </Button>
