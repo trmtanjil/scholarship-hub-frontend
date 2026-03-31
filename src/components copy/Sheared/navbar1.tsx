@@ -51,7 +51,7 @@ const menu = [
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <img src="https://i.ibb.co.com/rGRZwXJB/Chat-GPT-Image-Feb-6-2026-01-24-37-AM.png" className="max-h-8" alt="logo" />
+              <img src="https://i.ibb.co.com/rRtQNNjL/Scholarship-Hub-logo-design.png" className="max-h-8" alt="logo" />
               <span className="text-lg font-semibold uppercase">scholarship</span>
             </Link>
 
@@ -62,7 +62,7 @@ const menu = [
                   {menu.map((item) => (
                     <NavigationMenuItem key={item.title}>
   <NavigationMenuLink asChild>
-    <Link href={item.url} className="px-4 py-2 text-sm font-medium hover:text-amber-600 transition-colors">
+    <Link href={item.url} className="px-4 py-2 text-sm font-medium hover:text-blue-600 transition-colors">
       {item.title}
     </Link>
   </NavigationMenuLink>

@@ -1,7 +1,7 @@
 import Banner from "./_component/page/home/HeroBanner"
 import ScholarshipList from "./allschollerships/page"
-import HowToWork from "./howtowork/howtowork"
-import UserSay from "./usersay/usersay"
+import HowItWork from "./houtowork/howtowork"
+ import UserSay from "./usersay/usersay"
  
 
 
@@ -13,9 +13,9 @@ function page() {
             <Banner />
             <ScholarshipList></ScholarshipList>
             <div className="py-12 px-4 max-w-7xl mx-auto">
-                 <div><HowToWork></HowToWork></div>
+                 <div><HowItWork></HowItWork></div>
             <div><UserSay></UserSay></div>
-            </div>
+             </div>
         </div>
     )
 }

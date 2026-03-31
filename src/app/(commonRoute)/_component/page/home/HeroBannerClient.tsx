@@ -88,7 +88,7 @@ export default function HeroBannerClient({ bannerData }: HeroBannerClientProps) 
                     <Button
                       size="lg"
                       variant="outline"
-                      className="rounded-full px-7 py-5 text-base sm:text-lg text-white border-white/40 hover:bg-white/10"
+                      className="rounded-full px-7 py-5 text-base sm:text-lg text-gray-400 border-white/40 hover:bg-white/10"
                     >
                       Learn More
                     </Button>

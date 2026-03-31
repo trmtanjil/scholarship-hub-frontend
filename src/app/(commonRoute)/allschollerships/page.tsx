@@ -12,9 +12,7 @@ import {
   GraduationCap,
   MapPin,
   ArrowRight,
-  ImageIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function FeaturedScholarships() {
@@ -31,13 +29,20 @@ export default async function FeaturedScholarships() {
   const featured = scholarships?.slice(0, 8);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       {/* Header */}
-      <div className="mb-12 text-center space-y-3">
-        <h2 className="text-4xl font-extrabold text-slate-900">
+      <div className="mb-14 text-center space-y-4">
+        <div className="flex justify-center">
+          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <GraduationCap className="w-7 h-7 text-primary" />
+          </div>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
           Featured Scholarships
         </h2>
-        <p className="text-slate-500 max-w-2xl mx-auto">
+
+        <p className="text-slate-500 max-w-2xl mx-auto text-sm sm:text-base">
           Discover the best scholarship opportunities to support your academic journey.
         </p>
       </div>
@@ -47,32 +52,27 @@ export default async function FeaturedScholarships() {
         {featured?.map((s) => (
           <Card
             key={s.id}
-            className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all"
+            className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            {/* Image */}
-            {/* <div className="relative h-40 w-full bg-slate-100 flex items-center justify-center">
-              {s.imag ? (
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <div className="flex flex-col items-center text-slate-400">
-                  <ImageIcon className="w-10 h-10" />
-                  <span className="text-xs mt-1">No Image</span>
+            {/* Logo / Category Header */}
+            <div className="flex items-center justify-between px-5 pt-5">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 text-primary" />
                 </div>
-              )}
+                <span className="text-sm font-semibold text-slate-700">
+                  Scholarship
+                </span>
+              </div>
 
-              <Badge className="absolute top-4 left-4 bg-primary/90">
+              <Badge variant="secondary" className="text-xs">
                 {s.category}
               </Badge>
-            </div> */}
+            </div>
 
             {/* Content */}
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg font-bold line-clamp-1 group-hover:text-primary transition-colors">
+            <CardHeader className="pb-2 pt-4">
+              <CardTitle className="text-base font-bold line-clamp-2 group-hover:text-primary transition-colors">
                 {s.title}
               </CardTitle>
             </CardHeader>
@@ -80,12 +80,16 @@ export default async function FeaturedScholarships() {
             <CardContent className="space-y-3 text-sm">
               <div className="flex items-center gap-2 text-slate-600">
                 <MapPin className="w-4 h-4 text-primary" />
-                {s.universityName}
+                <span className="line-clamp-1">
+                  {s.universityName}
+                </span>
               </div>
 
               <div className="flex items-center gap-2 text-slate-600">
                 <GraduationCap className="w-4 h-4 text-primary" />
-                {s.subject}
+                <span className="line-clamp-1">
+                  {s.subject}
+                </span>
               </div>
 
               <p className="text-slate-500 line-clamp-2">
@@ -115,10 +119,10 @@ export default async function FeaturedScholarships() {
         ))}
       </div>
 
-      {/* View All Button */}
-      <div className="mt-14 text-center">
-        <Button asChild size="lg" className="rounded-2xl px-10">
-          <Link href="/allschollerships">
+      {/* View All */}
+      <div className="mt-16 text-center">
+        <Button asChild size="lg" className="rounded-2xl px-12">
+          <Link href="/allscholarshippublic">
             View All Scholarships
           </Link>
         </Button>
