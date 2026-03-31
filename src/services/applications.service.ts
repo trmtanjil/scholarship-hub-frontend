@@ -48,6 +48,8 @@ deleteApplication: async (id: string): Promise<ServiceResult<IMessageResponse>> 
     });
   },
  
+  
+
   // নির্দিষ্ট একটি অ্যাপ্লিকেশনের ডিটেইলস আনা
   getSingleApplication: async (id: string): Promise<ServiceResult<IApplication>> => {
     return await apiFetch<IApplication>(`/applications/${id}`, {

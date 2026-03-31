@@ -96,8 +96,7 @@ export default function AllApplicationsPage() {
               <TableHead>Student Name</TableHead>
               <TableHead>Scholarship</TableHead>
               <TableHead>SSC/HSC</TableHead>
-              <TableHead>Payment</TableHead>
-              <TableHead>Status</TableHead>
+               <TableHead>Status</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -115,13 +114,7 @@ export default function AllApplicationsPage() {
                   <TableCell>
                     <div className="text-xs font-semibold">S: {app.sscResult} | H: {app.hscResult}</div>
                   </TableCell>
-                  <TableCell>
-                    {app.payment ? (
-                      <Badge className="bg-green-100 text-green-700 hover:bg-green-100 border-none">Paid</Badge>
-                    ) : (
-                      <Badge className="bg-red-100 text-red-700 hover:bg-red-100 border-none">Unpaid</Badge>
-                    )}
-                  </TableCell>
+                 
                   <TableCell>
                     <Select 
                       defaultValue={app.status} 

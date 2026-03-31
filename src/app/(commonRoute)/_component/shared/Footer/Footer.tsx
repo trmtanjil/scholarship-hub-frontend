@@ -13,16 +13,22 @@ function Footer() {
                     {/* Brand Section */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-white">
-                            <GraduationCap className="h-8 w-8 text-primary-500 text-blue-500" />
+                            <GraduationCap className="h-8 w-8 text-blue-500" />
                             <span className="text-2xl font-bold tracking-tight">ScholarshipHub</span>
                         </div>
                         <p className="text-sm leading-relaxed text-slate-400">
-                            আমরা মেধাবী শিক্ষার্থীদের তাদের স্বপ্নের বিশ্ববিদ্যালয়ে পৌঁছাতে সাহায্য করি। সঠিক স্কলারশিপ খুঁজে পাওয়া এখন আরও সহজ।
+                            Empowering talented students to reach their dream universities worldwide. Finding the right scholarship is now easier than ever.
                         </p>
                         <div className="flex gap-4 pt-2">
-                                <Link href="#" className="hover:text-blue-500 transition-colors"><Globe size={20} /></Link>
-                                <Link href="#" className="hover:text-blue-400 transition-colors"><Share2 size={20} /></Link>
-                                <Link href="#" className="hover:text-blue-600 transition-colors"><Users size={20} /></Link>
+                            <Link href="#" className="hover:text-blue-500 transition-colors">
+                                <Globe size={20} />
+                            </Link>
+                            <Link href="#" className="hover:text-blue-400 transition-colors">
+                                <Share2 size={20} />
+                            </Link>
+                            <Link href="#" className="hover:text-blue-600 transition-colors">
+                                <Users size={20} />
+                            </Link>
                         </div>
                     </div>
 
