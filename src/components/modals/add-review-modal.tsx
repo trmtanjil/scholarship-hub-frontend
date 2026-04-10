@@ -58,7 +58,7 @@ export function AddReviewModal({ scholarshipId, scholarshipName }: { scholarship
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Write a Review for {scholarshipName}</DialogTitle>
+          <DialogTitle>Write a Review forr {scholarshipName}</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pt-4">
           <div className="flex gap-2 justify-center mb-4">
